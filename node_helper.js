@@ -132,8 +132,7 @@ module.exports = NodeHelper.create({
     if (notification === "START") {
       const config = payload;
       this.buildUrl(config);
-      this.loadTimes();
-      // this.task = setInterval(this.loadTimes.bind(this), config.updateInterval);
+      this.task = setInterval(this.loadTimes.bind(this), config.updateInterval);
     }
     // If stop timer message is received, stop timer that updates schedule
     if (notification === "STOP_TIMER") {
