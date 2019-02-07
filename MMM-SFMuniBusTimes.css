@@ -1,0 +1,21 @@
+.MMM-SFMuniBusTimes .route {
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: left;
+}
+
+.MMM-SFMuniBusTimes .train {
+  padding-right: 30px;
+  text-align: center;
+  color: white;
+}
+
+.MMM-SFMuniBusTimes .min-temp {
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+.MMM-SFMuniBusTimes .stop {
+  text-align: center;
+  padding-top: 20px;
+}

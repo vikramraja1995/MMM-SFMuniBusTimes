@@ -1,0 +1,31 @@
+{
+  "name": "mmm-sfmunibustimes",
+  "version": "1.0.0",
+  "description": "A MagicMirror module that displays San Francisco MUNI Rail and Bus times for the given stops",
+  "main": "MMM-SFMuniBusTimes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikramraja1995/MMM-SFMuniBusTimes.git"
+  },
+  "keywords": [
+    "magic mirror",
+    "smart mirror",
+    "module",
+    "muni",
+    "sf",
+    "bus times"
+  ],
+  "author": "Vikram Raja",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/vikramraja1995/MMM-SFMuniBusTimes/issues"
+  },
+  "homepage": "https://github.com/vikramraja1995/MMM-SFMuniBusTimes#readme",
+  "dependencies": {
+    "node-fetch": "^2.3.0",
+    "xml2js": "^0.4.19"
+  }
+}
