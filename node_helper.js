@@ -11,11 +11,16 @@ module.exports = NodeHelper.create({
     console.log(this.name + " has started!");
   },
 
-  url: new URL("http://webservices.nextbus.com/service/publicXMLFeed"),
+  url: new URL("https://retro.umoiq.com/service/publicXMLFeed"),
 
   // Fetch train times and generate a clean object only containing the require data
   loadTimes: async function() {
-    const data = await fetch(this.url).then(res => res.text());
+    const data = await fetch(this.url)
+                       .then(res => res.text())
+                       .catch(e => {
+                         console.error(e);
+                         return;
+                       });
 
     const obj = await parseXML(data);
     if (obj.body.Error !== undefined) {
@@ -28,7 +33,10 @@ module.exports = NodeHelper.create({
 
     // Digest data from each stop's predictions
     for (const pred of predictions) {
-      const route = pred.$.routeTag;
+      var route = pred.$.routeTag;
+      if (pred.direction) {
+        route = route +'-'+ pred.direction[0].$.title;
+      }
       const stop = pred.$.stopTitle;
       let stopData;
       // If a stop has been seen before, update the previously created object
@@ -54,17 +62,20 @@ module.exports = NodeHelper.create({
 
       let count = 0;
       // Digest data from each train's prediction for a stop
-      for (const trainPred of pred.direction[0].prediction) {
-        count += 1;
-        const train = {
-          seconds: trainPred.$.seconds,
-          cars: trainPred.$.vehiclesInConsist,
-          delayed: trainPred.$.delayed === true, // Defaults to false if delayed property doesn't exist
-        };
-        trains.push(train);
-        // Only process the next 3 trains for the current route
-        if (count >= 3) {
-          break;
+      if (pred.direction) {
+        for (const trainPred of pred.direction[0].prediction) {
+          count += 1;
+          const train = {
+            seconds: trainPred.$.seconds,
+            cars: trainPred.$.vehiclesInConsist,
+            delayed: trainPred.$.delayed === true, // Defaults to false if delayed property doesn't exist
+            direction: pred.direction[0].$.title,
+          };
+          trains.push(train);
+          // Only process the next 3 trains for the current route
+          if (count >= 3) {
+            break;
+          }
         }
       }
       // Sort routes so they're always ascending alphabetically/numerically

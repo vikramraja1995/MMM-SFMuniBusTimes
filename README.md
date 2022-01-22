@@ -44,13 +44,13 @@ This module gets the schedule of San Francisco's MUNI Bus / Rail for any given s
 
 ---
 
-For a list of routes, go to the following URL `http://webservices.nextbus.com/service/publicXMLFeed?command=routeList&a=sf-muni`.
+For a list of routes, go to the following URL `https://retro.umoiq.com/service/publicXMLFeed?command=routeList&a=sf-muni`.
 
 You will see each route is displayed in the following format: `<route tag="F" title="F-Market & Wharves"/>`. The `title` contains the actual route name, and the `tag` denotes the route ID.
 
 ---
 
-For a list of stops on a route, go to the following URL `http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=sf-muni&r=<ROUTE_ID>` (Replace `<ROUTE_ID>` with the appropriate route ID found in the URL mentioned earlier).
+For a list of stops on a route, go to the following URL `https://retro.umoiq.com/service/publicXMLFeed?command=routeConfig&a=sf-muni&r=<ROUTE_ID>` (Replace `<ROUTE_ID>` with the appropriate route ID found in the URL mentioned earlier).
 
 You will see each stop displayed in the following format `<stop tag="6293" title="Sacramento St & Cherry St" lat="37.7869099" lon="-122.45656" stopId="16293"/>`. Just like the route information seen earlier, the `title` denotes the actual stop name and the `tag` denotes the stop ID. Although there is a separate `stopId` property as seen above, we actually want what's inside the tag property.
 
@@ -64,7 +64,7 @@ Make sure you have the correct stop, as some stations have different IDs for Inb
 ---
 
 The NextBus API that is being used here is free and open to the public, and does not require that you obtain an access key.
-If you are interested in learning more about the API, have a look at its documentation here: https://www.nextbus.com/xmlFeedDocs/NextBusXMLFeed.pdf
+If you are interested in learning more about the API, have a look at its documentation here: https://retro.umoiq.com/xmlFeedDocs/NextBusXMLFeed.pdf
 
 ## Contribute
 

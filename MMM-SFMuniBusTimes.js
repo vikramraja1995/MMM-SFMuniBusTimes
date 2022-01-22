@@ -50,6 +50,8 @@ Module.register("MMM-SFMuniBusTimes", {
       for (const routeObj of stop.routes) {
         const { route } = routeObj;
 
+        if (routeObj.trains && routeObj.trains.length < 1) continue;
+
         // Create a row that will hold the route and next 3 bus / train times
         const row = document.createElement("tr");
         table.appendChild(row);
