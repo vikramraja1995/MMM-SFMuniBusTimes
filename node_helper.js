@@ -11,7 +11,7 @@ module.exports = NodeHelper.create({
     console.log(this.name + " has started!");
   },
 
-  url: new URL("http://retro.umoiq.com/service/publicXMLFeed"),
+  url: new URL("https://retro.umoiq.com/service/publicXMLFeed"),
 
   // Fetch train times and generate a clean object only containing the require data
   loadTimes: async function() {
